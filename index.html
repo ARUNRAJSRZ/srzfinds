@@ -1,13 +1,67 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>My Site</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SRZ Finds — Product List</title>
+  <meta name="description" content="SRZ Finds — curated affordable gadgets. Search, filter and buy." />
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Welcome to my website</h1>
-  <p>AMAZON</p>
-  <p><a href="https://www.example.com">My affiliate link</a></p>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">SRZ</div>
+        <div>
+          <h1>SRZ Finds</h1>
+          <p class="lead">Curated gadgets & aesthetic desk finds — affordable picks under ₹500</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <div class="badge" id="countBadge">0 items</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <div class="search" role="search" aria-label="Search products">
+        <input id="q" placeholder="Search products, e.g., 'LED desk lamp' or 'mouse pad'">
+        <button class="btn" id="clearBtn" title="Clear search">✕</button>
+      </div>
+
+      <div class="select">
+        <label for="category">Category</label>
+        <select id="category">
+          <option value="all">All categories</option>
+        </select>
+      </div>
+
+      <div class="select">
+        <label for="sort">Sort by</label>
+        <select id="sort">
+          <option value="relevance">Relevance</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="name-asc">Name A → Z</option>
+        </select>
+      </div>
+
+      <div style="margin-left:auto; display:flex; gap:10px">
+        <button class="btn" id="resetBtn" title="Reset filters">Reset</button>
+      </div>
+    </div>
+
+    <main>
+      <div id="grid" class="grid" aria-live="polite"></div>
+      <div id="empty" class="empty" style="display:none">No products match your search.</div>
+      <nav id="pagination" class="pagination" aria-label="Pagination" style="display:none"></nav>
+    </main>
+
+    <footer>
+      Built with ♥ by SRZ Finds — edit products in the JavaScript section.
+    </footer>
+  </div>
+
+<script src="js/script.js"></script>
 </body>
 </html>
