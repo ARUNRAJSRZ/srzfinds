@@ -42,7 +42,28 @@ p.lead{margin:0;color:var(--muted);font-size:13px}
 .desc{font-size:13px;color:var(--muted);margin:8px 0;flex:1}
 .actions{display:flex;gap:8px;margin-top:10px}
 .actions a{flex:1;text-decoration:none;padding:10px;border-radius:8px;text-align:center;font-weight:600}
-.buy{background:linear-gradient(90deg,#ef4444,#f97316); color:white}
+.buy{
+  background:linear-gradient(90deg,#FF9900,#FFB84D);
+  color:#232F3E;
+  font-weight:700;
+  border:1px solid #FF9900;
+  position:relative;
+  transition:box-shadow .15s;
+}
+.buy::before{
+  content:'';
+  display:inline-block;
+  vertical-align:middle;
+  width:18px;
+  height:18px;
+  margin-right:6px;
+  background:url('https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg') no-repeat center/contain;
+}
+.buy:hover{
+  box-shadow:0 2px 8px rgba(255,153,0,0.18);
+  background:linear-gradient(90deg,#FFB84D,#FF9900);
+  color:#232F3E;
+}
 .details{background:#fafafa;border:1px solid #f0f0f0;color:#111}
 
 .empty{padding:40px;text-align:center;color:var(--muted);background:transparent;border-radius:10px}
