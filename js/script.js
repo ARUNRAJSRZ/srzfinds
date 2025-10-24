@@ -1,8 +1,8 @@
 let products = [
-  {id:"p1", name:"Car Mobile mount", category:"Car Accessories", price:1099, image:"images/carmount.jpg", description:"Mini Dashboard Mount for iPhone 17/16/15/13/12, Samsung Galaxy Series.", affiliate:"https://amzn.to/47m0UPb"}
-  // {id:"p2", name:"Aesthetic Mouse Pad", category:"Accessories", price:249, image:"images/mousepad.jpg", description:"Smooth surface mouse pad with stitched edges.", affiliate:"https://www.amazon.in/"},
-  // {id:"p3", name:"Cable Organizer Clips (6pcs)", category:"Accessories", price:129, image:"images/mouse_pad.jpg", description:"Keep your desk tangle-free with simple adhesive clips.", affiliate:"https://www.amazon.in/"},
-  // {id:"p4", name:"Mini Bluetooth Speaker", category:"Audio", price:499, image:"images/speaker.jpg", description:"Portable speaker with clear sound and long battery life.", affiliate:"https://www.amazon.in/"},
+  {id:"p1", name:"Car Mobile mount", category:"Car Accessories", price:1099, image:"images/carmount.jpg", description:"Mini Dashboard Mount for iPhone 17/16/15/13/12, Samsung Galaxy Series.", affiliate:"https://amzn.to/47m0UPb"},
+  {id:"p2", name:"Safety Hand Gloves", category:"Accessories", price:144, image:"images/SafetyHandGloves.jpg", description:"Industrial Safety Hand Gloves (Pack of 1) Anti-Cut | Cut Resistant | Heat Resistant | Industrial Use | for Finger and Hand Protection.", affiliate:"https://amzn.to/4qnWTSU"},
+  {id:"p3", name:"Baby Cradle Swing", category:"Baby products", price:1599, image:"images/Baby_Cradle_Swing.jpg", description:"Baby Cradle Swing/Jhula (Thottil Cloth, Palna, Dolna) Set | Cradle Cloth with Padded Bed", affiliate:"https://amzn.to/49l12Rn"},
+  {id:"p4", name:"Magnetic Phones Holder", category:"Car Accessories", price:629, image:"images/Magnetic_Phones_Holder.jpg", description:"360° Vaccum Magnetic Phones Holder, Magnetic Car Phone Mount", affiliate:"https://amzn.to/4ohCUUk"}
   // {id:"p5", name:"Mini Bluetooth Speaker", category:"Audio", price:499, image:"images/speaker.jpg", description:"Portable speaker with clear sound and long battery life.", affiliate:"https://www.amazon.in/"}
 ];
 
