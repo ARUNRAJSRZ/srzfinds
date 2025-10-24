@@ -1,9 +1,8 @@
 let products = [
-  {id:"p1", name:"Car Mobile mount", category:"Car Accessories", price:1099, image:"images/carmount.jpg", description:"Mini Dashboard Mount for iPhone 17/16/15/13/12, Samsung Galaxy Series.", affiliate:"https://amzn.to/47m0UPb"},
-  {id:"p2", name:"Safety Hand Gloves", category:"Accessories", price:144, image:"images/SafetyHandGloves.jpg", description:"Industrial Safety Hand Gloves (Pack of 1) Anti-Cut | Cut Resistant | Heat Resistant | Industrial Use | for Finger and Hand Protection.", affiliate:"https://amzn.to/4qnWTSU"},
-  {id:"p3", name:"Baby Cradle Swing", category:"Baby products", price:1599, image:"images/Baby_Cradle_Swing.jpg", description:"Baby Cradle Swing/Jhula (Thottil Cloth, Palna, Dolna) Set | Cradle Cloth with Padded Bed", affiliate:"https://amzn.to/49l12Rn"},
-  {id:"p4", name:"Magnetic Phones Holder", category:"Car Accessories", price:629, image:"images/Magnetic_Phones_Holder.jpg", description:"360° Vaccum Magnetic Phones Holder, Magnetic Car Phone Mount", affiliate:"https://amzn.to/4ohCUUk"}
-  // {id:"p5", name:"Mini Bluetooth Speaker", category:"Audio", price:499, image:"images/speaker.jpg", description:"Portable speaker with clear sound and long battery life.", affiliate:"https://www.amazon.in/"}
+  {id:"p1", name:"Car Mobile mount", category:"Car Accessories", price:1099, image:"images/carmount.jpg", description:"Mini Dashboard Mount for iPhone 17/16/15/13/12, Samsung Galaxy Series.", affiliate:"https://amzn.to/47m0UPb", offer:true},
+  {id:"p2", name:"Safety Hand Gloves", category:"Accessories", price:144, image:"images/SafetyHandGloves.jpg", description:"Industrial Safety Hand Gloves (Pack of 1) Anti-Cut | Cut Resistant | Heat Resistant | Industrial Use | for Finger and Hand Protection.", affiliate:"https://amzn.to/4qnWTSU", offer:false},
+  {id:"p3", name:"Baby Cradle Swing", category:"Baby products", price:1599, image:"images/Baby_Cradle_Swing.jpg", description:"Baby Cradle Swing/Jhula (Thottil Cloth, Palna, Dolna) Set | Cradle Cloth with Padded Bed", affiliate:"https://amzn.to/49l12Rn", offer:true},
+  {id:"p4", name:"Magnetic Phones Holder", category:"Car Accessories", price:629, image:"images/Magnetic_Phones_Holder.jpg", description:"360° Vaccum Magnetic Phones Holder, Magnetic Car Phone Mount", affiliate:"https://amzn.to/4ohCUUk", offer:false}
 ];
 
 const grid = document.getElementById('grid');
@@ -22,7 +21,10 @@ let currentPage = 1;
 
 function populateCategories(){
   const cats = Array.from(new Set(products.map(p => p.category))).sort();
-  categorySel.innerHTML = '<option value="all">All categories</option>' + cats.map(c=>`<option value="${c}">${c}</option>`).join('');
+  let options = '<option value="all">All categories</option>';
+  options += '<option value="offer">Offer Zone ⭐️ </option>';
+  options += cats.map(c=>`<option value="${c}">${c}</option>`).join('');
+  categorySel.innerHTML = options;
 }
 
 function render(list){
@@ -59,12 +61,18 @@ function getFiltered(){
   const sort=sortSel.value;
   let list=products.filter(p=>{
     const matchesQ = !q || (p.name+' '+p.description+' '+p.category).toLowerCase().includes(q);
-    const matchesCat = cat==='all' || p.category===cat;
+    let matchesCat = cat==='all' || p.category===cat;
+    if(cat==='offer') matchesCat = p.offer === true;
     return matchesQ && matchesCat;
   });
-  if(sort==='price-asc') list.sort((a,b)=>a.price-b.price);
-  else if(sort==='price-desc') list.sort((a,b)=>b.price-a.price);
-  else if(sort==='name-asc') list.sort((a,b)=>a.name.localeCompare(b.name));
+  if(cat==='offer') {
+    // Show offer products first
+    list = list.sort((a,b)=>b.offer-a.offer);
+  } else {
+    if(sort==='price-asc') list.sort((a,b)=>a.price-b.price);
+    else if(sort==='price-desc') list.sort((a,b)=>b.price-a.price);
+    else if(sort==='name-asc') list.sort((a,b)=>a.name.localeCompare(b.name));
+  }
   return list;
 }
 
