@@ -80,12 +80,45 @@ function getFiltered(){
 clearBtn.addEventListener('click',()=>{qInput.value=''; currentPage = 1; qInput.dispatchEvent(new Event('input'));});
 resetBtn.addEventListener('click',()=>{qInput.value=''; categorySel.value='all'; sortSel.value='relevance'; currentPage = 1; render(getFiltered());});
 
-grid.addEventListener('click',ev=>{
-  const a=ev.target.closest('a.details'); if(!a) return;
+grid.addEventListener('click', ev => {
+  const a = ev.target.closest('a.details');
+  if(!a) return;
   ev.preventDefault();
-  const id=a.dataset.id;
-  const p=products.find(x=>x.id===id);
-  if(p) alert(`${p.name}\nCategory: ${p.category}\nPrice: ₹${p.price}\nDescription:\n${p.description}`);
+  
+  const id = a.dataset.id;
+  const p = products.find(x => x.id === id);
+  if(p) showProductModal(p);
+});
+
+function showProductModal(product) {
+  const modal = document.getElementById('productModal');
+  document.getElementById('modalTitle').textContent = product.name;
+  document.getElementById('modalCategory').textContent = product.category;
+  document.getElementById('modalPrice').textContent = `₹${product.price}`;
+  document.getElementById('modalDesc').textContent = product.description;
+  document.getElementById('modalImage').src = product.image;
+  document.getElementById('modalImage').alt = product.name;
+  document.getElementById('modalBuy').href = product.affiliate;
+  
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden'; // Prevent background scroll
+}
+
+function closeModal() {
+  const modal = document.getElementById('productModal');
+  modal.style.display = 'none';
+  document.body.style.overflow = ''; // Restore scroll
+}
+
+// Add modal close handlers
+document.querySelector('.modal-close').addEventListener('click', closeModal);
+document.getElementById('productModal').addEventListener('click', e => {
+  if (e.target.id === 'productModal') closeModal();
+});
+
+// Add keyboard handler for accessibility
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
 });
 /**
  * Render pagination controls into `paginationEl`.

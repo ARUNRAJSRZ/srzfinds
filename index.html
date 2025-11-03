@@ -57,6 +57,25 @@
       <nav id="pagination" class="pagination" aria-label="Pagination" style="display:none"></nav>
     </main>
 
+    <!-- Product Details Modal -->
+    <div id="productModal" class="modal" role="dialog" aria-labelledby="modalTitle" style="display:none">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <h2 id="modalTitle"></h2>
+        <div class="modal-body">
+          <div class="modal-img">
+            <img id="modalImage" alt="">
+          </div>
+          <div class="modal-info">
+            <p id="modalCategory"></p>
+            <p id="modalPrice"></p>
+            <p id="modalDesc"></p>
+            <a id="modalBuy" class="btn primary" target="_blank" rel="noopener">Buy on Amazon</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer>
       <div style="display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;margin:6px 0">
         <div class="socials" aria-hidden="false" style="display:flex;gap:8px;align-items:center">
