@@ -164,6 +164,15 @@ footer{margin-top:26px;text-align:center;color:var(--muted);font-size:13px}
   line-height: 1.5;
 }
 
+.price-disclaimer {
+  display: block;
+  color: var(--accent);
+  font-size: 11px;
+  margin-top: 8px;
+  text-align: center;
+  opacity: 0.8; /* slightly dimmed to distinguish from the main price */
+}
+
 @media (max-width: 640px) {
   .modal-body {
     grid-template-columns: 1fr;
